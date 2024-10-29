@@ -51,6 +51,4 @@ COPY backend/handler.py /app/backend/handler.py
 # Set the working directory to backend
 WORKDIR /app/backend
 
-RUN python3.9 handler.py
-
 CMD ["python3.9", "handler.py"]
