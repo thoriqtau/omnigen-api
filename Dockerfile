@@ -46,13 +46,11 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 
 # Copy the FastAPI application code
-COPY backend/main.py /app/backend/main.py
+COPY backend/handler.py /app/backend/handler.py
 
 # Set the working directory to backend
 WORKDIR /app/backend
 
-# Expose FastAPI port
-EXPOSE 8000
+RUN python3.9 handler.py
 
-# Start FastAPI with Uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python3.9", "handler.py"]
