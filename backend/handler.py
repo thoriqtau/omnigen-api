@@ -8,6 +8,10 @@ import time
 import runpod
 
 
+# DOCKER_BUILDKIT=1 docker build --platform linux/amd64 -t arisylafeta/omnigen-api .
+# docker push arisylafeta/omnigen-api
+
+
 # backend/main.py
 
 # Set the absolute path to the model directory
@@ -34,12 +38,11 @@ def handler(job):
         input_images = job_input.get('input_images', None)
 
         if input_images:
-            # Load images from base64 strings
+            # Load images as BytesIO objects instead of PIL Images
             loaded_images = []
             for image_data in input_images:
                 image_bytes = base64.b64decode(image_data)
-                image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
-                loaded_images.append(image)
+                loaded_images.append(io.BytesIO(image_bytes))
 
             # Create placeholders for each image
             placeholders = " ".join(
