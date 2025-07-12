@@ -7,7 +7,7 @@ import asyncio
 
 async def send_request():
     endpoint_id = "nqra85vrvbz3ji"
-    api_key = "9SPZ3DGRA7UB52OG4A5ILX6MQU85TR21UIS8WO1O"  # Replace with your actual API key
+    api_key = "9SPZ3DGRA7UB52OG4A5ILX6MQU85TR21UIS8WO1O"  
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}"
