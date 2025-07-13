@@ -13,13 +13,17 @@ async def send_request():
         "Authorization": f"Bearer {api_key}"
     }
     
+    input_images=["./imgs/demo_cases/emma.jpeg", "./imgs/demo_cases/dress.jpg"]
     # Initial payload with only the prompt
     payload = {
         "input": {
-            "prompt": "A beautiful beach on the Maldives, a couple tanning and enjoying some drinks, ultrarealistic, 4K",
-            "height": 512,
-            "width": 512,
+            "prompt": "The man in <img><|image_1|></img> and the style in <img><|image_2|></img>", 
+            "height": 1024,
+            "width": 1024,
             "guidance_scale": 2.5,
+            "input_images": input_images,
+            "img_guidance_scale":1.6,
+            "max_input_image_size":1024
         }
     }
 
