@@ -50,7 +50,7 @@ pipe = OmniGenPipeline.from_pretrained('Shitao/OmniGen-v1', torch_dtype=torch.bf
 pipe.save_pretrained('/app/model_files') \
 "
 
-COPY --from=builder /app/model_files /app/model_files
+# COPY --from=builder /app/model_files /app/model_files
 
 # Copy the FastAPI application code
 COPY backend/handler.py /app/backend/handler.py
