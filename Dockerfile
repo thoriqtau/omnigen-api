@@ -14,8 +14,14 @@ WORKDIR /app
 # Copy the OmniGen repository and install it
 COPY OmniGen /app/OmniGen
 
-# Copy the model_files directly into the builder stage
-COPY model_files /app/model_files
+# Download model dari Hugging Face
+WORKDIR /app
+RUN python3 -c "\
+import torch; \
+from diffusers import OmniGenPipeline; \
+pipe = OmniGenPipeline.from_pretrained('Shitao/OmniGen-v1', torch_dtype=torch.bfloat16); \
+pipe.save_pretrained('/app/model_files') \
+"
 
 # Copy the requirements.txt for FastAPI app
 COPY requirements.txt /app/requirements.txt
